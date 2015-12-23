@@ -1,6 +1,6 @@
 # xscreensaver-aerial
 An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and plays it using mpv. 
-* The day movies will play between the hours of 7AM and 6 PM while the night movies will play thereafter.
+* The day movies will play between the hours of 7 AM and 7 PM while the night movies will play thereafter.
 * No movie should repeat until all of the respective movies have cycled through once. After that, the queue will reset and continue playing in a random fashion.
 * No excessive HDD usage. When the display is told to sleep by xscreensaver, whatever video is currently playing will finish and another will NOT get called until the display is active again.
 
@@ -12,11 +12,13 @@ An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and 
 * xscreensaver
 
 # Installation
+## Users of Arch Linux
 Arch Linux users may simply download the PKGBUILD from the AUR (below) and build as usual. Follow the post install instructions.
 
-Users of other distros MUST complete these 3 steps manually.
+## Users of other distros
+Users of other distros can manually complete these 3 steps:
 
-download the expected video content manually. The script expects all 34 of them to be installed to /opt/ATV4 which should be world-readabled. You may use the following to little script to obtain the videos and save them to this location.
+Download the expected video content manually as the screensaver expects all 34 of them to be installed to `/opt/ATV4` which should be world-readable. You may use the following to little script to obtain the videos and save them to this location. Make sure that you have `wget` installed prior to running the script:
 ```
 #!/bin/sh
 # run this from /opt/ATV4 which you created and assigned 755 premissions manually
