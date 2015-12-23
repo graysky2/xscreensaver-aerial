@@ -3,6 +3,8 @@ An xscreensaver that randomly selects one of the Apple TV4 aerial movies and pla
 
 Note that when the display is told to sleep by xscreensaver, whatever video is currently playing will finish and another will not get called until the display is active again (no excess HDD usage)!
 
+![screen shot](http://wpuploads.appadvice.com/wp-content/uploads/2015/10/iMacAppleTVScreensaver.gif)
+
 # Dependencies
 * coreutils
 * mpv
