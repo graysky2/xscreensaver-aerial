@@ -1,6 +1,6 @@
 # xscreensaver-aerial
 An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and plays it using mpv. 
-* The day movies will play between the hours of 7AM and 6 PM while the night movies will play thereafter.
+* The day movies will play between the hours of 7 AM and 7 PM while the night movies will play thereafter.
 * No movie should repeat until all of the respective movies have cycled through once. After that, the queue will reset and continue playing in a random fashion.
 * No excessive HDD usage. When the display is told to sleep by xscreensaver, whatever video is currently playing will finish and another will NOT get called until the display is active again.
 
