@@ -1,7 +1,10 @@
 # xscreensaver-aerial
-An xscreensaver that randomly selects one of the Apple TV4 aerial movies and play it using mpv. The day movies will play between the hours of 7AM and 6 PM while the night movies will play thereafter. No movie should repeat until all of the respective movies have cycled through once. After that, the queue will reset and continue playing in a random fashion.
+An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and plays it using mpv. 
+* The day movies will play between the hours of 7AM and 6 PM while the night movies will play thereafter.
+* No movie should repeat until all of the respective movies have cycled through once. After that, the queue will reset and continue playing in a random fashion.
+* No excessive HDD usage. When the display is told to sleep by xscreensaver, whatever video is currently playing will finish and another will NOT get called until the display is active again.
 
-Note that when the display is told to sleep by xscreensaver, whatever video is currently playing will finish and another will not get called until the display is active again (no excess HDD usage)!
+![screen shot](http://wpuploads.appadvice.com/wp-content/uploads/2015/10/iMacAppleTVScreensaver.gif)
 
 # Dependencies
 * coreutils
@@ -19,9 +22,12 @@ download the expected video content manually. The script expects all 34 of them 
 # run this from /opt/ATV4 which you created and assigned 755 premissions manually
 
 url="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos"
-for i in b10-1.mov b10-2.mov b10-3.mov b10-4.mov b1-1.mov b1-2.mov b1-3.mov b1-4.mov b2-1.mov b2-2.mov b2-3.mov b2-4.mov b3-1.mov b3-2.mov b3-3.mov b4-1.mov b4-2.mov b4-3.mov b5-1.mov b5-2.mov b5-3.mov b6-1.mov b6-2.mov b6-3.mov b6-4.mov b7-1.mov b7-2.mov b7-3.mov b8-1.mov b8-2.mov b8-3.mov b9-1.mov b9-2.mov b9-3.mov; do
- wget "$url/$i"
- chmod 644 $(pwd)/$i
+for i in b10-1.mov b10-2.mov b10-3.mov b10-4.mov b1-1.mov b1-2.mov b1-3.mov b1-4.mov \
+	b2-1.mov b2-2.mov b2-3.mov b2-4.mov b3-1.mov b3-2.mov b3-3.mov b4-1.mov b4-2.mov \
+	b4-3.mov b5-1.mov b5-2.mov b5-3.mov b6-1.mov b6-2.mov b6-3.mov b6-4.mov b7-1.mov \
+	b7-2.mov b7-3.mov b8-1.mov b8-2.mov b8-3.mov b9-1.mov b9-2.mov b9-3.mov; do
+	wget "$url/$i"
+	chmod 644 $(pwd)/$i
 done
 ```
 
