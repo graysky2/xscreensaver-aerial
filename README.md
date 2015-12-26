@@ -16,7 +16,7 @@ An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and 
 Arch Linux users may simply download the PKGBUILD from the AUR (below) and build as usual. Follow the post install instructions.
 
 ## Users of other distros
-Users of other distros MUST complete these 3 steps manually.
+Users of other distros can manually complete these 3 steps:
 
 Download the expected video content manually as the screensaver expects all 34 of them to be installed to `/opt/ATV4` which should be world-readabled. You may use the following to little script to obtain the videos and save them to this location.
 ```
