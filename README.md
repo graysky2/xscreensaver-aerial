@@ -4,8 +4,6 @@ An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and 
 * No movie should repeat until all of the respective movies have cycled through once. After that, the queue will reset and continue playing in a random fashion.
 * No excessive HDD usage. When the display is told to sleep by xscreensaver, whatever video is currently playing will finish and another will NOT get called until the display is active again.
 
-![screen shot](http://wpuploads.appadvice.com/wp-content/uploads/2015/10/iMacAppleTVScreensaver.gif)
-
 # Dependencies
 * coreutils
 * mpv

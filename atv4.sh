@@ -22,8 +22,8 @@ day_db=$XDG_CONFIG_HOME/.atv4-day
 night_db=$XDG_CONFIG_HOME/.atv4-night
 
 runit() {
-	[[ -s "$day_db" ]] || echo ${DayArr[@]} | sed 's/ /\n/g' > "$day_db"
-	[[ -s "$night_db" ]] || echo ${NightArr[@]} | sed 's/ /\n/g' > "$night_db"
+	[[ -s "$day_db" ]] || echo "${DayArr[@]}" | sed 's/ /\n/g' > "$day_db"
+	[[ -s "$night_db" ]] || echo "${NightArr[@]}" | sed 's/ /\n/g' > "$night_db"
 
 	# set the time of day based on the local clock
 	# where day is after 7AM and before 6PM
@@ -35,7 +35,7 @@ runit() {
 	fi
 
 	# select at random a video to play from the day or night pools
-	howmany=$(cat "$use_db"|wc -l)
+	howmany=$(wc -l "$use_db" | awk '{ print $1 }')
 	##echo "$use_db contains $howmany records"
 	# two conditions:
 	# 1) 1 line left (one vid) so use the vid and regenerate the list
@@ -50,7 +50,7 @@ runit() {
 		# condition 2 is true
 		rndpick=1
 		while [[ $rndpick -lt 2 ]]; do
-			rndpick=$((RANDOM%$howmany+1))
+			rndpick=$((RANDOM%howmany+1))
 		done
 		useit=$(sed -n "$rndpick p" "$use_db")
 
@@ -67,7 +67,7 @@ trap : SIGTERM SIGINT SIGHUP
 while (true) #!(keystate lshift)
 do
 	runit
-	[[ -f "$movies/$useit" ]] || { echo "Error: $movie/$useit is missing!" ; exit 1 ; }
+	[[ -f "$movies/$useit" ]] || { echo "Error: $movies/$useit is missing!" ; exit 1 ; }
 
 	mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid=$XSCREENSAVER_WINDOW $movies/$useit &
 	pid=$!
