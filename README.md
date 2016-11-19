@@ -16,7 +16,8 @@ Arch Linux users may simply download the PKGBUILD from the AUR (below) and build
 ## Users of other distros
 Users of other distros can manually complete these 3 steps:
 
-Download the expected video content manually as the screensaver expects all 34 of them to be installed to `/opt/ATV4` which should be world-readable. You may use the following to little script to obtain the videos and save them to this location. Make sure that you have `wget` installed prior to running the script:
+Optionally download the expected video content manually to save bandwidth streaming them.
+This screensaver expects them to be installed to `/opt/ATV4` which should be world-readable. You may use the following to little script to obtain the videos and save them to this location. Make sure that you have `wget` installed prior to running the script:
 ```
 #!/bin/sh
 # run this from /opt/ATV4 which you created and assigned 755 premissions manually
