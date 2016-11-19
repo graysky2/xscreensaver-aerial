@@ -13,10 +13,15 @@ An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and 
 ## Users of Arch Linux
 Arch Linux users may simply download the PKGBUILD from the AUR (below) and build as usual. Follow the post install instructions.
 
+## Arch Linux Packages
+* https://aur.archlinux.org/packages/xscreensaver-aerial
+* https://aur.archlinux.org/packages/xscreensaver-aerial-videos (optional to avoid bandwidth of streaming from apple)
+
 ## Users of other distros
 Users of other distros can manually complete these 3 steps:
 
-Download the expected video content manually as the screensaver expects all 34 of them to be installed to `/opt/ATV4` which should be world-readable. You may use the following to little script to obtain the videos and save them to this location. Make sure that you have `wget` installed prior to running the script:
+Optionally download the expected video content manually to save bandwidth streaming them.
+This screensaver expects them to be installed to `/opt/ATV4` which should be world-readable. You may use the following to little script to obtain the videos and save them to this location. Make sure that you have `wget` installed prior to running the script:
 ```
 #!/bin/sh
 # run this from /opt/ATV4 which you created and assigned 755 premissions manually
@@ -41,6 +46,3 @@ Finally edit ~/.xscreensaver to add support for it to see this script. Look for 
 ```
 
 Now you can select it from `xscreensaver-demo` like any other. Enjoy!
-
-# Arch Linux Package
-https://aur.archlinux.org/packages/xscreensaver-aerial
