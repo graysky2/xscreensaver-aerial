@@ -28,7 +28,7 @@ runit() {
 	# set the time of day based on the local clock
 	# where day is after 7AM and before 6PM
 	hour=$(date +%H)
-	if [ $hour -gt 19 -a $hour -lt 7 ]; then
+	if [ "$hour" -gt 19 -a "$hour" -lt 7 ]; then
 		use_db=$night_db
 	else
 		use_db=$day_db
@@ -67,11 +67,15 @@ trap : SIGTERM SIGINT SIGHUP
 while (true) #!(keystate lshift)
 do
 	runit
-	[[ -f "$movies/$useit" ]] || { echo "Error: $movies/$useit is missing!" ; exit 1 ; }
-
-	mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid=$XSCREENSAVER_WINDOW $movies/$useit &
+	if [[ -f "$movies/$useit" ]]; then
+		# file is on filesystem so just play it
+		mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" "$movies/$useit" &
+	else
+		# no file on filesystem so try to stream it
+		APPLEURL="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos"
+		mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" "$APPLEURL/$useit" &
+	fi
 	pid=$!
-
 	wait $pid
 	[ $? -gt 128 ] && { kill $pid ; exit 128; } ;
 done
