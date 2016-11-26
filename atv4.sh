@@ -1,7 +1,7 @@
 #!/bin/bash
 
 [[ -z "$XDG_CONFIG_HOME" ]] &&
-	XDG_CONFIG_HOME="$HOME/.config"
+  XDG_CONFIG_HOME="$HOME/.config"
 
 command -v mpv >/dev/null 2>&1 || {
 echo "I require mpv but it's not installed. Aborting." >&2
@@ -22,41 +22,41 @@ day_db=$XDG_CONFIG_HOME/.atv4-day
 night_db=$XDG_CONFIG_HOME/.atv4-night
 
 runit() {
-	[[ -s "$day_db" ]] || echo "${DayArr[@]}" | sed 's/ /\n/g' > "$day_db"
-	[[ -s "$night_db" ]] || echo "${NightArr[@]}" | sed 's/ /\n/g' > "$night_db"
+  [[ -s "$day_db" ]] || echo "${DayArr[@]}" | sed 's/ /\n/g' > "$day_db"
+  [[ -s "$night_db" ]] || echo "${NightArr[@]}" | sed 's/ /\n/g' > "$night_db"
 
-	# set the time of day based on the local clock
-	# where day is after 7AM and before 6PM
-	hour=$(date +%H)
-	if [ "$hour" -gt 19 -a "$hour" -lt 7 ]; then
-		use_db=$night_db
-	else
-		use_db=$day_db
-	fi
+  # set the time of day based on the local clock
+  # where day is after 7AM and before 6PM
+  hour=$(date +%H)
+  if [ "$hour" -gt 19 -a "$hour" -lt 7 ]; then
+    use_db=$night_db
+  else
+    use_db=$day_db
+  fi
 
-	# select at random a video to play from the day or night pools
-	howmany=$(wc -l "$use_db" | awk '{ print $1 }')
-	##echo "$use_db contains $howmany records"
-	# two conditions:
-	# 1) 1 line left (one vid) so use the vid and regenerate the list
-	# 2) 2 or more lines left so select a random number between 1 and $howmany
-	if [[ $howmany -eq 1 ]]; then
-		# condition 1 is true
-		useit=$(sed -n "1 p" "$use_db")
+  # select at random a video to play from the day or night pools
+  howmany=$(wc -l "$use_db" | awk '{ print $1 }')
+  ##echo "$use_db contains $howmany records"
+  # two conditions:
+  # 1) 1 line left (one vid) so use the vid and regenerate the list
+  # 2) 2 or more lines left so select a random number between 1 and $howmany
+  if [[ $howmany -eq 1 ]]; then
+    # condition 1 is true
+    useit=$(sed -n "1 p" "$use_db")
 
-		# exclude the one we just picked to create the illusion that we NEVER repeat :)
-		sed -i "/$useit/d" "$use_db"
-	elif [[ $howmany -ge 2 ]]; then
-		# condition 2 is true
-		rndpick=1
-		while [[ $rndpick -lt 2 ]]; do
-			rndpick=$((RANDOM%howmany+1))
-		done
-		useit=$(sed -n "$rndpick p" "$use_db")
+    # exclude the one we just picked to create the illusion that we NEVER repeat :)
+    sed -i "/$useit/d" "$use_db"
+  elif [[ $howmany -ge 2 ]]; then
+    # condition 2 is true
+    rndpick=1
+    while [[ $rndpick -lt 2 ]]; do
+      rndpick=$((RANDOM%howmany+1))
+    done
+    useit=$(sed -n "$rndpick p" "$use_db")
 
-		# exclude the one we just picked to create the illusion that we NEVER repeat :)
-		sed -i "/$useit/d" "$use_db"
-	fi
+    # exclude the one we just picked to create the illusion that we NEVER repeat :)
+    sed -i "/$useit/d" "$use_db"
+  fi
 }
 
 # this part taken from Kevin Cox
@@ -66,16 +66,18 @@ IFS=$'\n'
 trap : SIGTERM SIGINT SIGHUP
 while (true) #!(keystate lshift)
 do
-	runit
-	if [[ -f "$movies/$useit" ]]; then
-		# file is on filesystem so just play it
-		mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" "$movies/$useit" &
-	else
-		# no file on filesystem so try to stream it
-		APPLEURL="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos"
-		mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" "$APPLEURL/$useit" &
-	fi
-	pid=$!
-	wait $pid
-	[ $? -gt 128 ] && { kill $pid ; exit 128; } ;
+  runit
+  if [[ -f "$movies/$useit" ]]; then
+    # file is on filesystem so just play it
+    mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" "$movies/$useit" &
+  else
+    # no file on filesystem so try to stream it
+    APPLEURL="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos"
+    mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" "$APPLEURL/$useit" &
+  fi
+  pid=$!
+  wait $pid
+  [ $? -gt 128 ] && { kill $pid ; exit 128; } ;
 done
+
+# vim:set ts=2 sw=2 et:
