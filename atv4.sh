@@ -39,7 +39,7 @@ runit() {
   # set the time of day based on the local clock
   # where day is after 7AM and before 6PM
   hour=$(date +%H)
-  if [ "$hour" -gt 19 -a "$hour" -lt 7 ]; then
+  if [ "$hour" -gt 19 -o "$hour" -lt 7 ]; then
     use_db=$night_db
   else
     use_db=$day_db
