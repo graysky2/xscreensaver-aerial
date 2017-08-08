@@ -80,11 +80,11 @@ do
   runit
   if [[ -f "$movies/$useit" ]]; then
     # file is on filesystem so just play it
-    mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" --panscan=1.0 "$movies/$useit" &
+    mpv --really-quiet --no-audio --fs --no-stop-screensaver --no-osc --osd-level=0 --wid="$XSCREENSAVER_WINDOW" --panscan=1.0 "$movies/$useit" &
   else
     # no file on filesystem so try to stream it
     APPLEURL="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos"
-    mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" --panscan=1.0 "$APPLEURL/$useit" &
+    mpv --really-quiet --no-audio --fs --no-stop-screensaver --no-osc --osd-level=0 --wid="$XSCREENSAVER_WINDOW" --panscan=1.0 "$APPLEURL/$useit" &
   fi
   pid=$!
   wait $pid
