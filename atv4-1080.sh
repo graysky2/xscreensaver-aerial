@@ -112,8 +112,14 @@ do
     mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" --panscan=1.0 "$movies/$useit" &
   else
     # no file on filesystem so try to stream it
-    APPLEURL="http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos"
-    mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" --panscan=1.0 "$APPLEURL/$useit" &
+    # there are two potential apple URLs so test them sequentially
+    APPLEURL="http://a1.v2.phobos.apple.com.edgesuite.net/us/r1000/000/Features/atv/AutumnResources/videos"
+    if wget --spider -q "$APPLEURL/$useit"; then
+      mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" --panscan=1.0 "$APPLEURL/$useit" &
+    else
+      APPLEURL="http://sylvan.apple.com/Aerials/2x/Videos/"
+      mpv --really-quiet --no-audio --fs --no-stop-screensaver --wid="$XSCREENSAVER_WINDOW" --panscan=1.0 "$APPLEURL/$useit" &
+    fi
   fi
   pid=$!
   wait $pid
