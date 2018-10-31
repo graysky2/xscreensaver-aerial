@@ -53,8 +53,8 @@ For only 1080p videos use this script:
 #!/bin/sh
 # run this from /opt/ATV4 which you created and assigned 755 premissions manually
 
-url1="http://a1.v2.phobos.apple.com.edgesuite.net/us/r1000/000/Features/atv/AutumnResources/videos/"
-url3="http://sylvan.apple.com/Aerials/2x/Videos/"
+_url1="http://a1.v2.phobos.apple.com.edgesuite.net/us/r1000/000/Features/atv/AutumnResources/videos/"
+_url3="http://sylvan.apple.com/Aerials/2x/Videos/"
 
 for i in b2-1.mov b5-1.mov b6-1.mov comp_GL_G010_C006_v08_6Mbps.mov b1-1.mov \
 	b2-2.mov b4-1.mov b6-2.mov b7-1.mov b8-1.mov b1-2.mov b3-1.mov b5-2.mov \
