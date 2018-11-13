@@ -12,7 +12,7 @@ An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and 
 
 # Movies
 ## 1080p version
-There are 66 movies totally including the 13 shot from the International Space Station that Apple included with the tvOS 12.x release. These will play at both day and night.
+There are 65 movies totally including the 13 shot from the International Space Station that Apple included with the release of tvOS 12. These will play at both day and night.
 
 ## 4k version
 There are 36 movies totally.
@@ -20,13 +20,11 @@ There are 36 movies totally.
 # Installation
 ## Users of Arch Linux
 Arch Linux users may simply download the PKGBUILD from the AUR (below) and build as usual. Follow the post install instructions.
+* ![logo](http://www.monitorix.org/imgs/archlinux.png "arch logo") [xscreensaver-aerial](https://aur.archlinux.org/packages/xscreensaver-aerial) - this hack.
 
-## Arch Linux Packages
-* <https://aur.archlinux.org/packages/xscreensaver-aerial> - screensaver itself
-* <https://aur.archlinux.org/packages/xscreensaver-aerial-videos-1080>  
-videos 1080p version (optional to avoid bandwidth of streaming from apple)
-* <https://aur.archlinux.org/packages/xscreensaver-aerial-videos-4k>  
-videos 4k version (optional to avoid bandwidth of streaming from apple)
+_Optional video packs useful to avoid multiple calls streaming from Apple (offline copies on your physical system)._
+* ![logo](http://www.monitorix.org/imgs/archlinux.png "arch logo") [xscreensaver-aerial-videos-1080](https://aur.archlinux.org/packages/xscreensaver-aerial-videos-1080) - 2k videos require approx 12.1 GB of space.
+* ![logo](http://www.monitorix.org/imgs/archlinux.png "arch logo") [xscreensaver-aerial-videos-4k](https://aur.archlinux.org/packages/xscreensaver-aerial-videos-4k) - 4k videos require approx 13.7 GB of space.
 
 ## Users of other distros
 Users of other distros can manually complete these 2 steps:
