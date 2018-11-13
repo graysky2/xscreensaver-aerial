@@ -22,8 +22,11 @@ There are 36 movies totally.
 Arch Linux users may simply download the PKGBUILD from the AUR (below) and build as usual. Follow the post install instructions.
 
 ## Arch Linux Packages
-* https://aur.archlinux.org/packages/xscreensaver-aerial
-* https://aur.archlinux.org/packages/xscreensaver-aerial-videos (optional to avoid bandwidth of streaming from apple)
+* <https://aur.archlinux.org/packages/xscreensaver-aerial> - screensaver itself
+* <https://aur.archlinux.org/packages/xscreensaver-aerial-videos-1080>  
+videos 1080p version (optional to avoid bandwidth of streaming from apple)
+* <https://aur.archlinux.org/packages/xscreensaver-aerial-videos-4k>  
+videos 4k version (optional to avoid bandwidth of streaming from apple)
 
 ## Users of other distros
 Users of other distros can manually complete these 2 steps:
