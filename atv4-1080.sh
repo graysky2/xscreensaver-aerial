@@ -61,9 +61,24 @@ comp_GMT329_117NC_401C_1037_IRELAND_TO_ASIA_v48_SDR_PS_FINAL_20180725_F0F6300_SD
 day_db=$XDG_CONFIG_HOME/.atv4-day
 night_db=$XDG_CONFIG_HOME/.atv4-night
 
+# previous file to allow playing same video on multiple screens
+# consecutive runs play the same video
+prev_used=$XDG_CONFIG_HOME/.atv4-previous
+prev_timeout=30
+
 runit() {
   [[ -s "$day_db" ]] || echo "${DayArr[@]}" | sed 's/ /\n/g' > "$day_db"
   [[ -s "$night_db" ]] || echo "${NightArr[@]}" | sed 's/ /\n/g' > "$night_db"
+
+  secs_now=$(date +%s)
+  secs_prev=0
+  [[ -r "$prev_used" ]] && secs_prev=$(date -r "$prev_used" +%s)
+  secs_delta=$((secs_now - secs_prev))
+  if [[ "$secs_delta" -lt "$prev_timeout" ]]; then
+    # consecutive runs - use the previous video
+    useit="$(cat $prev_used)"
+    return
+  fi
 
   # set the time of day based on the local clock
   # where day is after 7AM and before 6PM
@@ -83,6 +98,7 @@ runit() {
   if [[ $howmany -eq 1 ]]; then
     # condition 1 is true
     useit=$(sed -n "1 p" "$use_db")
+    printf "%s" "$useit" > "$prev_used"
 
     # exclude the one we just picked to create the illusion that we NEVER repeat :)
     sed -i "/$useit/d" "$use_db"
@@ -93,6 +109,7 @@ runit() {
       rndpick=$((RANDOM%howmany+1))
     done
     useit=$(sed -n "$rndpick p" "$use_db")
+    printf "%s" "$useit" > "$prev_used"
 
     # exclude the one we just picked to create the illusion that we NEVER repeat :)
     sed -i "/$useit/d" "$use_db"
