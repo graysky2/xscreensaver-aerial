@@ -79,15 +79,19 @@ runit() {
   [[ -s "$day_db" ]] || echo "${DayArr[@]}" | sed 's/ /\n/g' > "$day_db"
   [[ -s "$night_db" ]] || echo "${NightArr[@]}" | sed 's/ /\n/g' > "$night_db"
 
-  # wait until lock is gone or too old
-  while [[ -r "$runit_lock" ]]; do
-    secs_now=$(date +%s)
-    secs_lock=$(date -r "$runit_lock" +%s)
-    secs_delta=$((secs_now - secs_lock))
-    [[ "$secs_delta" -ge "$lock_timeout" ]] && break
+  while true; do
+    # wait until lock is gone or too old
+    while [[ -r "$runit_lock" ]]; do
+      secs_now=$(date +%s)
+      secs_lock=$(date -r "$runit_lock" +%s)
+      secs_delta=$((secs_now - secs_lock))
+      [[ "$secs_delta" -ge "$lock_timeout" ]] && break
+    done
+    # create lock
+    printf "%s" "$XSCREENSAVER_WINDOW" > "$runit_lock"
+    # check if someone hasn't overwritten the lock
+    [[ "$(cat $runit_lock)" == "$XSCREENSAVER_WINDOW" ]] && break
   done
-  # create lock
-  touch "$runit_lock"
     
   # check if this script was run in last $prev_timeout seconds
   secs_now=$(date +%s)
