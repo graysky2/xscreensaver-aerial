@@ -4,7 +4,7 @@ An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and 
 * No movie should repeat until all of the respective movies have cycled through once. After that, the queue will reset and continue playing in a random fashion.
 * No excessive HDD usage. When the display is told to sleep by xscreensaver, whatever video is currently playing will finish and another will NOT get called until the display is active again.
 
-# Users of Windows or iOS
+# Users of Windows or macOS
 Xscreensaver is for linux and unix..
 * macOS users can try [Aerial](https://github.com/JohnCoates/Aerial)
 * Windows users can try [cDima/Aerial](https://github.com/cDima/Aerial)
