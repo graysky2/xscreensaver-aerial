@@ -6,7 +6,7 @@ An xscreensaver that randomly selects one of the Apple TV4 HD aerial movies and 
 
 # Users of Windows or iOS
 Xscreensaver is for linux and unix..
-* iOS users can try [Aerial](https://github.com/JohnCoates/Aerial)
+* macOS users can try [Aerial](https://github.com/JohnCoates/Aerial)
 * Windows users can try [cDima/Aerial](https://github.com/cDima/Aerial)
 
 # Dependencies
