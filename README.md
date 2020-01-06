@@ -65,8 +65,8 @@ _url3="http://sylvan.apple.com/Aerials/2x/Videos"
 for i in b2-1.mov b5-1.mov b6-1.mov comp_GL_G010_C006_v08_6Mbps.mov b1-1.mov \
 	b2-2.mov b4-1.mov b6-2.mov b7-1.mov b8-1.mov b1-2.mov b3-1.mov b5-2.mov \
 	b6-3.mov b1-3.mov b2-3.mov b3-2.mov b4-2.mov b7-2.mov b1-4.mov b2-4.mov \
-	b3-3.mov b4-3.mov b5-3.mov b6-4.mov b7-3.mov b8-2.mov b8-3.mov b9-2.mov \
-	b9-3.mov b10-3.mov; do
+	b3-3.mov b4-3.mov b5-3.mov b6-4.mov b7-3.mov b8-2.mov b8-3.mov b9-1.mov \
+	b9-2.mov b9-3.mov b10-1.mov b10-2.mov b10-3.mov b10-4.mov; do
 	wget "$_url1/$i"
 	chmod 644 $(pwd)/$i
 done
