@@ -67,7 +67,7 @@ for i in b2-1.mov b5-1.mov b6-1.mov comp_GL_G010_C006_v08_6Mbps.mov b1-1.mov \
 	b6-3.mov b1-3.mov b2-3.mov b3-2.mov b4-2.mov b7-2.mov b1-4.mov b2-4.mov \
 	b3-3.mov b4-3.mov b5-3.mov b6-4.mov b7-3.mov b8-2.mov b8-3.mov b9-2.mov \
 	b9-3.mov b10-3.mov; do
-	wget "$_url1/$i"
+	wget -c "$_url1/$i"
 	chmod 644 $(pwd)/$i
 done
 
@@ -97,7 +97,7 @@ for i in comp_CH_C007_C011_PSNK_v02_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov \
 	LA_A006_C008_2K_SDR_HEVC.mov LA_A009_C009_2K_SDR_HEVC.mov LA_A008_C004_2K_SDR_HEVC.mov \
 	comp_LA_A006_C004_v01_SDR_FINAL_PS_20180730_SDR_2K_HEVC.mov LA_A005_C009_2K_SDR_HEVC.mov \
 	LA_A011_C003_2K_SDR_HEVC.mov; do
-	wget "$_url3/$i"
+	wget -c "$_url3/$i"
   chmod 644 $(pwd)/$i
 done
 
@@ -134,7 +134,7 @@ for i in  comp_CH_C007_C011_PSNK_v02_SDR_PS_FINAL_20180709_SDR_4K_HEVC.mov \
 	LW_L001_C006_4K_SDR_HEVC.mov LA_A006_C008_4K_SDR_HEVC.mov LA_A009_C009_4K_SDR_HEVC.mov \
 	LA_A008_C004_4K_SDR_HEVC.mov comp_LA_A006_C004_v01_SDR_FINAL_PS_20180730_SDR_4K_HEVC.mov \
 	LA_A005_C009_4K_SDR_HEVC.mov LA_A011_C003_4K_SDR_HEVC.mov; do
-	wget "$_url2/$i"
+	wget -c "$_url2/$i"
 	chmod 644 $(pwd)/$i
 done
 ```
