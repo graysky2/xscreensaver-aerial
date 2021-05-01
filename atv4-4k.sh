@@ -166,7 +166,7 @@ do
   runit
   if [[ -f "$movies/$useit" ]]; then
     # file is on filesystem so just play it
-    mplayer -nosound -really-quiet -nolirc -nostop-xscreensaver -wid "$XSCREENSAVER_WINDOW" -fs "$APPLEURL/$useit" &
+    mplayer -nosound -really-quiet -nolirc -nostop-xscreensaver -wid "$XSCREENSAVER_WINDOW" -fs "$movies/$useit" &
   else
     # no file on filesystem so try to stream it
     APPLEURL="https://sylvan.apple.com/Aerials/2x/Videos"
