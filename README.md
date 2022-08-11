@@ -42,14 +42,19 @@ _Optional video packs useful to avoid multiple calls streaming from Apple (offli
 ## Users of other distros
 Users of other distros can manually complete these 2 steps:
 
-Note that you don't actually need to install both unless you want to have support for both 2k videos and 4k videos.
+Note that you don't actually need to install both unless you want to have support for both 2k videos and 4k videos.  Determine where your distro stores xscreensaver's screensavers.
+
+* Upstream default is: `/usr/lib/xscreensaver/`
+* Recent versions of Ubuntu seem to use: `/usr/libexec/xscreensaver/`
+
+For the purposes of this guide, `$XSCREEN` will reference the path defining the location of xscreensavers.
+
 1) If you want both the 2k and 4k versions:
- Copy `atv4-2k.sh` from this repo  to `/usr/lib/xscreensaver/atv4-2k` and make it executable by running the following as the root user.
- Copy `atv4-4k.sh` from this repo to `/usr/lib/xscreensaver/atv4-4k` and make it executable by running the following as the root user.
+ Copy `atv4-2k.sh` from this repo to `$XSCREEN/atv4-2k` and make it executable by running the following as the root user.
+ Copy `atv4-4k.sh` from this repo to `$XSCREEN/atv4-4k` and make it executable by running the following as the root user.
 
 ```
-cp atv4-2k.sh /usr/lib/xscreensaver/atv4-2k && chmod +x /usr/lib/xscreensaver/atv4-2k
-cp atv4-4k.sh /usr/lib/xscreensaver/atv4-4k && chmod +x /usr/lib/xscreensaver/atv4-4k
+cp atv4-2k.sh $XSCREEN/atv4-2k && chmod +x XSCREEN/xscreensaver/atv4-2k
 ```
 
 2) Edit ~/.xscreensaver to add support for it to see this script. Look for the line that beings with "programs:" and simply add the following to the file:
