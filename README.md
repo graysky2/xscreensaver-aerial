@@ -54,7 +54,7 @@ For the purposes of this guide, `$XSCREEN` will reference the path defining the 
  Copy `atv4-4k.sh` from this repo to `$XSCREEN/atv4-4k` and make it executable by running the following as the root user.
 
 ```
-cp atv4-2k.sh $XSCREEN/atv4-2k && chmod +x XSCREEN/xscreensaver/atv4-2k
+cp atv4-2k.sh $XSCREEN/atv4-2k && chmod +x $XSCREEN/atv4-2k
 ```
 
 2) Edit ~/.xscreensaver to add support for it to see this script. Look for the line that beings with "programs:" and simply add the following to the file:
