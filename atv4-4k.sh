@@ -8,7 +8,8 @@ command -v mplayer >/dev/null 2>&1 || {
   exit 1; }
 
 # path of movies
-movies=/opt/ATV4
+default_movies=/opt/ATV4
+movies=${MOVIES_FOLDER:-$default_movies}
 
 # day and night videos
 DayArr=(
