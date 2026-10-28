@@ -160,7 +160,9 @@ runit() {
 # https://github.com/kevincox/xscreensaver-videos
 
 IFS=$'\n'
-trap : SIGTERM SIGINT SIGHUP
+pid=
+# exit even when the signal lands outside of wait (e.g. during runit)
+trap '[[ -n $pid ]] && kill $pid 2>/dev/null; exit 128' SIGTERM SIGINT SIGHUP
 while (true) #!(keystate lshift)
 do
   runit
@@ -174,7 +176,8 @@ do
   fi
   pid=$!
   wait $pid
-  [ $? -gt 128 ] && { kill $pid ; exit 128; } ;
+  # xscreensaver is gone, stop instead of respawning mplayer into a dead window
+  [[ -d /proc/$PPID ]] || exit 1
 done
 
 # vim:set ts=2 sw=2 et:
